@@ -1,17 +1,23 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+interface AppProps {
+  title?: string;
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function App({title}: AppProps) {
+	const [counter, setCounter] = useState(0);
+
+	return (
+		<div>
+			<h3>Henry Workshop - title={title}</h3>
+			<hr></hr>
+			<button onClick={() => setCounter(counter + 1)}>Increment</button>
+			<button onClick={() => setCounter(counter - 1)}>Decrement</button>
+			<br></br>
+			<span>{counter}</span>
+		</div>
+	);
+}
+
+ReactDOM.render(<App />, document.querySelector('#root'));
