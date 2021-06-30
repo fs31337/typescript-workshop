@@ -1,5 +1,7 @@
 import {sequelize} from './src/db';
 import app from './src/app';
+
+
 sequelize
 	.sync({force: true, logging: false})
 	.then(() => {

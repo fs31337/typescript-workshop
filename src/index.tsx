@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 
 ReactDOM.render(
 	<Provider store={store}>
-		<h1>Henry</h1>
+		<App/>
 	</Provider>,
 	document.querySelector('#root')
 );

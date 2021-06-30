@@ -13,11 +13,12 @@ export interface FetchUsersAction {
     payload: User[];
   }
 
-const url = 'https://localhost:3001/user';
+const url = 'http://localhost:3001/api/User';
 
 export const fetchUsers = () => {
 	return async (dispatch: Dispatch) => {
 		const response = await axios.get<User[]>(url);
+		console.log(response.data,"response data")
 		dispatch<FetchUsersAction>({
 			type: ActionTypes.fetchUsers,
 			payload: response.data,

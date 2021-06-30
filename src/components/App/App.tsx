@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {connect} from 'react-redux';
 import {User, fetchUsers} from '../../actions';
 import {StoreState} from '../../reducers/';
@@ -9,7 +9,21 @@ interface AppProps {
 }
 
 function App(props: AppProps) {
-	return <div>Hello Henrys</div>;
+	useEffect(() => {
+		props.fetchUsers();
+	}, []);
+	return (
+		<div>
+			<button onClick={props.fetchUsers}>FETCH USERS!</button>
+			{props.users.map((user: User) => {
+				return (
+					<div key={user.id}>
+						{user.id}) {user.name}
+					</div>
+				);
+			})}
+		</div>
+	);
 }
 
 const mapStateToProps = (state: StoreState): {users: User[]} => {
